@@ -4,72 +4,89 @@
       First: "John",
       Last: "Doe",
       Posted_date: "9/10/15",
-      Power_Number: 12423,
+      Power_Number: "11234",
       Agency: "SouthSide Bail"
     },
     {
       First: "Joe",
       Last: "Danger",
       Posted_date: "9/10/15",
-      Power_Number: 13643
+      Power_Number: "11234",
+      Agency: "Gator Bail"
     },
     {
       First: "Jane",
       Last: "White",
       Posted_date: "9/10/15",
-      Power_Number: 23323,
+      Power_Number: "11234",
       Agency: "Gator Bail"
     },
     {
       First: "Ethan",
       Last: "Black",
       Posted_date: "9/10/15",
-      Power_Number: 67863,
+      Power_Number: "11234",
       Agency: "Hub City Bail Bonds"
     },
     {
       First: "Joshua",
       Last: "Hernendez",
       Posted_date: "9/10/15",
-      Power_Number: 23423,
+      Power_Number: "11234",
       Agency: "US Bail"
     },
     {
       First: "Jimmy",
       Last: "Hendrick",
       Posted_date: "9/10/15",
-      Power_Number: 56754,
+      Power_Number: "11234",
       Agency: "SouthSide Bail"
     },
     {
       First: "Max",
       Last: "Ammillion",
       Posted_date: "9/10/15",
-      Power_Number: 12342,
+      Power_Number: "11234",
       Agency: "Hub City Bail Bonds"
     },
     {
       First: "Rich",
       Last: "Gunt",
       Posted_date: "9/10/15",
-      Power_Number: 23242,
+      Power_Number: "11234",
       Agency: "Hub City Bail Bonds"
     },
     {
       First: "Jake",
       Last: "Swanson",
       Posted_date: "9/10/15",
-      Power_Number: 13453,
+      Power_Number: "11234",
       Agency: "Gator Bail"
     },
     {
       First: "Ezra",
       Last: "Chase",
       Posted_date: "9/10/15",
-      Power_Number: 85345,
+      Power_Number: "11234",
       Agency: "SouthSide Bail"
     }
   ];
+
+  jQuery(document).ready(function() {
+    jQuery("#myInput").on("keyup", function() {
+      var value = jQuery(this)
+        .val()
+        .toLowerCase();
+      jQuery("#myTable tr").filter(function() {
+        jQuery(this).toggle(
+          jQuery(this)
+            .text()
+            .toLowerCase()
+            .indexOf(value) > -1
+        );
+      });
+    });
+  });
 </script>
 
 <style>
@@ -105,7 +122,8 @@
     class="form-control"
     placeholder="Search for a Defendant"
     aria-label="Defendant's Name"
-    aria-describedby="basic-addon2" />
+    aria-describedby="basic-addon2"
+    id="myInput" />
   <div class="input-group-append">
     <button class="btn btn-primary" type="button">Button</button>
   </div>
@@ -129,7 +147,7 @@
       </tr>
     </thead>
     {#each defendants as defendant}
-      <tbody>
+      <tbody id="myTable">
         <tr>
           <th scope="row">{defendant.Power_Number}</th>
           <td>{defendant.First}</td>
