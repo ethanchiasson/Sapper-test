@@ -11,9 +11,8 @@
     background-color: white;
     padding: 2em;
     box-sizing: border-box;
-    background-color: red;
-    width: 100vw;
-    height: 100vh;
+    background-color: white;
+    min-height: calc(100vh - 4em - 1px);
   }
 </style>
 

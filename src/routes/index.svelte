@@ -1,35 +1,79 @@
 <script>
   const defendants = [
-    { First: "John", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Joe", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Jane", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Ethan", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Joshua", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Jimmy", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Max", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Rich", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Jake", Last: "Manager", Posted_date: "9/10/15" },
-    { First: "Ezra", Last: "Manager", Posted_date: "9/10/15" }
+    {
+      First: "John",
+      Last: "Doe",
+      Posted_date: "9/10/15",
+      Power_Number: 12423,
+      Agency: "SouthSide Bail"
+    },
+    {
+      First: "Joe",
+      Last: "Danger",
+      Posted_date: "9/10/15",
+      Power_Number: 13643
+    },
+    {
+      First: "Jane",
+      Last: "White",
+      Posted_date: "9/10/15",
+      Power_Number: 23323,
+      Agency: "Gator Bail"
+    },
+    {
+      First: "Ethan",
+      Last: "Black",
+      Posted_date: "9/10/15",
+      Power_Number: 67863,
+      Agency: "Hub City Bail Bonds"
+    },
+    {
+      First: "Joshua",
+      Last: "Hernendez",
+      Posted_date: "9/10/15",
+      Power_Number: 23423,
+      Agency: "US Bail"
+    },
+    {
+      First: "Jimmy",
+      Last: "Hendrick",
+      Posted_date: "9/10/15",
+      Power_Number: 56754,
+      Agency: "SouthSide Bail"
+    },
+    {
+      First: "Max",
+      Last: "Ammillion",
+      Posted_date: "9/10/15",
+      Power_Number: 12342,
+      Agency: "Hub City Bail Bonds"
+    },
+    {
+      First: "Rich",
+      Last: "Gunt",
+      Posted_date: "9/10/15",
+      Power_Number: 23242,
+      Agency: "Hub City Bail Bonds"
+    },
+    {
+      First: "Jake",
+      Last: "Swanson",
+      Posted_date: "9/10/15",
+      Power_Number: 13453,
+      Agency: "Gator Bail"
+    },
+    {
+      First: "Ezra",
+      Last: "Chase",
+      Posted_date: "9/10/15",
+      Power_Number: 85345,
+      Agency: "SouthSide Bail"
+    }
   ];
 </script>
 
 <style>
-  .container {
-    display: flex;
-    flex-direction: column;
-  }
-  .defendant {
-    background-color: #212121;
-    color: white;
-    padding: 10px;
-    flex: 1;
-    min-width: 90%;
-    max-width: 100%;
-    margin: auto;
-    margin-bottom: 10px;
-  }
-
-  button {
+  .viewButton {
     width: 75px;
     height: auto;
     background-color: #333;
@@ -37,12 +81,17 @@
     border-radius: 5px;
   }
 
-  button:hover {
+  .viewButton:hover {
     background-color: rgb(13, 146, 255);
   }
 
-  button:hover > .material-icons {
+  .viewButton:hover > .material-icons {
     color: white;
+  }
+
+  .material-icons {
+    display: inline-flex;
+    vertical-align: top;
   }
 </style>
 
@@ -50,16 +99,50 @@
   <title>Defendants</title>
 </svelte:head>
 
-<div class="container">
-  {#each defendants as defendant}
-    <div class="defendant">
-      <div class="card" style="display: flex">
-        <h1 style="flex:3">{defendant.First} {defendant.Last}</h1>
-        <p style="flex:1">{defendant.Posted_date}</p>
-        <button>
-          <span class="material-icons">remove_red_eye</span>
-        </button>
-      </div>
-    </div>
-  {/each}
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search for a Defendant"
+    aria-label="Defendant's Name"
+    aria-describedby="basic-addon2" />
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">Button</button>
+  </div>
+</div>
+<button
+  type="button"
+  class="btn btn-primary btn-lg btn-block"
+  style="margin-bottom: 10px">
+  Add New Defendant
+</button>
+<div class="table-responsive">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Power #</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Posted Date</th>
+        <th scope="col">Agency</th>
+        <th scope="col">View Defendant</th>
+      </tr>
+    </thead>
+    {#each defendants as defendant}
+      <tbody>
+        <tr>
+          <th scope="row">{defendant.Power_Number}</th>
+          <td>{defendant.First}</td>
+          <td>{defendant.Last}</td>
+          <td>{defendant.Posted_date}</td>
+          <td>{defendant.Agency}</td>
+          <td>
+            <button class="viewButton">
+              <span class="material-icons">remove_red_eye</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    {/each}
+  </table>
 </div>
