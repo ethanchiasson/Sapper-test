@@ -1,5 +1,21 @@
 <script>
-  const defendants = [
+  // jQuery(document).ready(function() {
+  //   jQuery("#myInput").on("keyup", function() {
+  //     var value = jQuery(this)
+  //       .val()
+  //       .toLowerCase();
+  //     jQuery("#myTable tr").filter(function() {
+  //       jQuery(this).toggle(
+  //         jQuery(this)
+  //           .text()
+  //           .toLowerCase()
+  //           .indexOf(value) > -1
+  //       );
+  //     });
+  //   });
+  // });
+
+  let tableData = [
     {
       First: "John",
       Last: "Doe",
@@ -72,21 +88,24 @@
     }
   ];
 
-  jQuery(document).ready(function() {
-    jQuery("#myInput").on("keyup", function() {
-      var value = jQuery(this)
-        .val()
-        .toLowerCase();
-      jQuery("#myTable tr").filter(function() {
-        jQuery(this).toggle(
-          jQuery(this)
-            .text()
-            .toLowerCase()
-            .indexOf(value) > -1
-        );
-      });
-    });
-  });
+  let list = [];
+  let searchQuery;
+
+  $: searchQuery
+    ? (list = tableData.filter(
+        ({ First, Last, Posted_date, Power_Number, Agency }) => {
+          return (
+            First.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 ||
+            Last.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 ||
+            Posted_date.toLowerCase().indexOf(searchQuery.toLowerCase()) !==
+              -1 ||
+            Power_Number.toLowerCase().indexOf(searchQuery.toLowerCase()) !==
+              -1 ||
+            Agency.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
+          );
+        }
+      ))
+    : (list = tableData);
 </script>
 
 <style>
@@ -115,7 +134,10 @@
 <svelte:head>
   <title>Defendants</title>
 </svelte:head>
-
+<h3>
+  Defendants
+  <span class="badge badge-primary">{tableData.length}</span>
+</h3>
 <div class="input-group mb-3">
   <input
     type="text"
@@ -123,10 +145,11 @@
     placeholder="Search for a Defendant"
     aria-label="Defendant's Name"
     aria-describedby="basic-addon2"
-    id="myInput" />
-  <div class="input-group-append">
+    id="myInput"
+    bind:value={searchQuery} />
+  <!-- <div class="input-group-append">
     <button class="btn btn-primary" type="button">Button</button>
-  </div>
+  </div> -->
 </div>
 <button
   type="button"
@@ -134,8 +157,8 @@
   style="margin-bottom: 10px">
   Add New Defendant
 </button>
-<div class="table-responsive">
-  <table class="table table-dark">
+<div class="table table-responsive">
+  <table class="table table-striped table-dark">
     <thead>
       <tr>
         <th scope="col">Power #</th>
@@ -146,10 +169,11 @@
         <th scope="col">View Defendant</th>
       </tr>
     </thead>
-    {#each defendants as defendant}
-      <tbody id="myTable">
+
+    <tbody id="myTable">
+      {#each list as defendant}
         <tr>
-          <th scope="row">{defendant.Power_Number}</th>
+          <td>{defendant.Power_Number}</td>
           <td>{defendant.First}</td>
           <td>{defendant.Last}</td>
           <td>{defendant.Posted_date}</td>
@@ -160,7 +184,7 @@
             </button>
           </td>
         </tr>
-      </tbody>
-    {/each}
+      {/each}
+    </tbody>
   </table>
 </div>

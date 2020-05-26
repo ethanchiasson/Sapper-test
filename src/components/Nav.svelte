@@ -72,5 +72,13 @@
         blog
       </a>
     </li>
+    <li>
+      <a
+        rel="prefetch"
+        aria-current={segment === 'blog' ? 'page' : undefined}
+        href="defendant">
+        defendant
+      </a>
+    </li>
   </ul>
 </nav>
