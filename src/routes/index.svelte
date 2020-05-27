@@ -1,20 +1,4 @@
 <script>
-  // jQuery(document).ready(function() {
-  //   jQuery("#myInput").on("keyup", function() {
-  //     var value = jQuery(this)
-  //       .val()
-  //       .toLowerCase();
-  //     jQuery("#myTable tr").filter(function() {
-  //       jQuery(this).toggle(
-  //         jQuery(this)
-  //           .text()
-  //           .toLowerCase()
-  //           .indexOf(value) > -1
-  //       );
-  //     });
-  //   });
-  // });
-
   let tableData = [
     {
       First: "John",

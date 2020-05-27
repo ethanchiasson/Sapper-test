@@ -1,4 +1,6 @@
 <script>
+  import FileUpload from "../components/FileUpload.svelte";
+
   let defendant = {
     power_Number: "7777",
     first: "John",
@@ -63,6 +65,15 @@
   .defendantTabs {
     margin-top: 2vh;
   }
+
+  .DefendantFooter > button {
+    margin-left: 10px;
+  }
+
+  .defendantHeader > .left > span {
+    padding: 7px;
+    font-size: 1em;
+  }
 </style>
 
 <svelte:head>
@@ -124,6 +135,18 @@
           aria-controls="pills-contact"
           aria-selected="false">
           Bonds
+        </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills"
+          data-toggle="pill"
+          href="#pills-contact2"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false">
+          Documents
         </a>
       </li>
     </ul>
@@ -249,7 +272,7 @@
                   <td>{bonds.status}</td>
                   <td>{bonds.agency}</td>
                   <td>{bonds.agent}</td>
-                  <td>{bonds.amount}</td>
+                  <td>${bonds.amount}</td>
                   <td>{bonds.posted_Date}</td>
                   <td>{bonds.forfiture_By}</td>
                 </tr>
@@ -258,9 +281,21 @@
           </table>
         </div>
       </div>
+      <div
+        class="tab-pane fade"
+        id="pills-contact2"
+        role="tabpanel"
+        aria-labelledby="pills-contact-tab2">
+        <div class="defendantFileUpload">
+          <h4>Upload a File</h4>
+          <div class="fileUpload">
+            <FileUpload />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="DefendantFooter" style="float:right">
+  <div class="DefendantFooter" style="display:flex; justify-content:flex-end;">
     <button type="button" class="btn btn-primary">Edit</button>
     <button type="button" class="btn btn-danger">Delete</button>
   </div>

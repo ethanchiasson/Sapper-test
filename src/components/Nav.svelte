@@ -75,7 +75,7 @@
     <li>
       <a
         rel="prefetch"
-        aria-current={segment === 'blog' ? 'page' : undefined}
+        aria-current={segment === 'defendant' ? 'page' : undefined}
         href="defendant">
         defendant
       </a>
