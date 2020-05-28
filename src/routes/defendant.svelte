@@ -1,5 +1,17 @@
 <script>
   import FileUpload from "../components/FileUpload.svelte";
+  import Payments from "../components/Payments.svelte";
+
+  let agents = {
+    names: [
+      {
+        agent_name: "Ethan"
+      },
+      {
+        agent_name: "Emily"
+      }
+    ]
+  };
 
   let defendant = {
     power_Number: "7777",
@@ -46,6 +58,20 @@
         amount: "10000",
         posted_Date: "4/4/2018",
         forfiture_By: "7/7/2018"
+      }
+    ],
+    payments: [
+      {
+        amount: "1560.89",
+        agent: "George Washington",
+        date: new Date(),
+        payment_type: "PayPal"
+      },
+      {
+        amount: "50475.5",
+        agent: "George Washington",
+        date: new Date(),
+        payment_type: "Cash"
       }
     ]
   };
@@ -135,6 +161,18 @@
           aria-controls="pills-contact"
           aria-selected="false">
           Bonds
+        </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="pills"
+          data-toggle="pill"
+          href="#pills-contact3"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false">
+          Payments
         </a>
       </li>
       <li class="nav-item" role="presentation">
@@ -247,7 +285,8 @@
         aria-labelledby="pills-contact-tab">
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary d-flex justify-content-center
+          align-content-between"
           style="float: right; margin-bottom: 2vh">
           Add Bond
           <span class="material-icons">add</span>
@@ -287,9 +326,32 @@
         role="tabpanel"
         aria-labelledby="pills-contact-tab2">
         <div class="defendantFileUpload">
-          <h4>Upload a File</h4>
           <div class="fileUpload">
             <FileUpload />
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="pills-contact3"
+        role="tabpanel"
+        aria-labelledby="pills-contact-tab3">
+        <div class="defendantFileUpload">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary d-flex justify-content-center"
+            data-toggle="modal"
+            data-target="#exampleModal"
+            style="float: right; margin-bottom: 2vh">
+            Add Payment
+            <span class="material-icons">add</span>
+          </button>
+          <div class="payments">
+            <Payments
+              name={defendant.first + ' ' + defendant.last}
+              {defendant}
+              {agents} />
           </div>
         </div>
       </div>
