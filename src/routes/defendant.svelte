@@ -1,7 +1,7 @@
 <script>
   import FileUpload from "../components/FileUpload.svelte";
   import Payments from "../components/Payments.svelte";
-  import Bond from "../components/bonds.svelte";
+  import Bond from "../components/Bonds.svelte";
   import Defendant from "../components/DefendantTab.svelte";
   import Dependant from "../components/DependantTab.svelte";
 
