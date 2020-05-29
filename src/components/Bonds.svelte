@@ -4,24 +4,32 @@
   export let agents;
 </script>
 
+<style>
+
+</style>
+
 <!-- Button trigger modal -->
 <button
   type="button"
   class="btn btn-primary d-flex justify-content-center"
   data-toggle="modal"
-  data-target="#exampleModal"
+  data-target="#exampleModal2"
   style="float: right; margin-bottom: 2vh">
-  Add Payment
+  Add Bond
   <span class="material-icons">add</span>
 </button>
 <div class="table table-responsive">
   <table class="table table-striped table-dark">
     <thead>
       <tr>
-        <th scope="col">Amount</th>
-        <th scope="col">Payment Type</th>
+        <th scope="col">Power #</th>
+        <th scope="col">Status</th>
+        <th scope="col">Agency</th>
         <th scope="col">Agent</th>
-        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Posted Date</th>
+        <th scope="col">Forfiture By</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -34,6 +42,20 @@
           <td>${bonds.amount}</td>
           <td>{bonds.posted_Date}</td>
           <td>{bonds.forfiture_By}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-sm btn-secondary"
+              style="margin: 2px">
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-danger"
+              style="margin: 2px">
+              Delete
+            </button>
+          </td>
         </tr>
       {/each}
     </tbody>
@@ -43,7 +65,7 @@
 <!-- Modal -->
 <div
   class="modal fade"
-  id="exampleModal"
+  id="exampleModal2"
   tabindex="-1"
   role="dialog"
   aria-labelledby="exampleModalLabel"
@@ -52,7 +74,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          New Payment for Defendant {name}
+          New Bond for Defendant {name}
         </h5>
         <button
           type="button"

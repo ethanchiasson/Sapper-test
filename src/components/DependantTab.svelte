@@ -1,41 +1,85 @@
 <script>
-  export let name;
   export let defendant;
-  export let agents;
+  export let name;
+
+  function toggle() {
+    let ssnAreaDEP = document.getElementById("ssnDEP");
+    if (ssnAreaDEP.classList.contains("hidetext")) {
+      ssnAreaDEP.classList.remove("hidetext");
+    } else {
+      ssnAreaDEP.classList.add("hidetext");
+    }
+  }
 </script>
 
-<!-- Button trigger modal -->
+<style>
+  .hidetext {
+    -webkit-text-security: disc; /* Default */
+    cursor: pointer;
+  }
+</style>
+
 <button
   type="button"
   class="btn btn-primary d-flex justify-content-center"
   data-toggle="modal"
-  data-target="#exampleModal"
+  data-target="#exampleModal3"
   style="float: right; margin-bottom: 2vh">
-  Add Payment
+  Add Dependant
   <span class="material-icons">add</span>
 </button>
 <div class="table table-responsive">
   <table class="table table-striped table-dark">
     <thead>
       <tr>
-        <th scope="col">Amount</th>
-        <th scope="col">Payment Type</th>
-        <th scope="col">Agent</th>
-        <th scope="col">Date</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Middle</th>
+        <th scope="col">DOB</th>
+        <th scope="col">SSN</th>
+        <th scope="col">Phone</th>
+        <th scope="col">State</th>
+        <th scope="col">City</th>
+        <th scope="col">Postal Code</th>
+        <th scope="col">Address</th>
+        <th scope="col">Apt #</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody id="myTable">
-      {#each defendant.bonds as bonds}
-        <tr>
-          <td>{bonds.power_Number}</td>
-          <td>{bonds.status}</td>
-          <td>{bonds.agency}</td>
-          <td>{bonds.agent}</td>
-          <td>${bonds.amount}</td>
-          <td>{bonds.posted_Date}</td>
-          <td>{bonds.forfiture_By}</td>
-        </tr>
-      {/each}
+      <tr>
+        <td>{defendant.dependant_First}</td>
+        <td>{defendant.dependant_Last}</td>
+        <td>{defendant.dependant_Middle}</td>
+        <td>{defendant.dependant_Dob}</td>
+        <td
+          class="hidetext"
+          id="ssnDEP"
+          on:click={toggle}
+          style="cursor:pointer;">
+          {defendant.dependant_Ssn}
+        </td>
+        <td>{defendant.dependant_Phone}</td>
+        <td>{defendant.dependant_State}</td>
+        <td>{defendant.dependant_City}</td>
+        <td>{defendant.dependant_Address}</td>
+        <td>{defendant.dependant_PostalCode}</td>
+        <td>{defendant.dependant_AptNum}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            style="margin: 2px">
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-danger"
+            style="margin: 2px">
+            Delete
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -43,7 +87,7 @@
 <!-- Modal -->
 <div
   class="modal fade"
-  id="exampleModal"
+  id="exampleModal3"
   tabindex="-1"
   role="dialog"
   aria-labelledby="exampleModalLabel"
@@ -52,7 +96,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          New Payment for Defendant {name}
+          New Defendant for {name}
         </h5>
         <button
           type="button"
@@ -80,14 +124,6 @@
               <option>Cash</option>
               <option>Check</option>
               <option>Credit Card</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="agentSelect">Agent</label>
-            <select class="form-control" id="agentSelect">
-              {#each agents.names as agent}
-                <option>{agent.agent_name}</option>
-              {/each}
             </select>
           </div>
         </form>

@@ -1,6 +1,9 @@
 <script>
   import FileUpload from "../components/FileUpload.svelte";
   import Payments from "../components/Payments.svelte";
+  import Bond from "../components/bonds.svelte";
+  import Defendant from "../components/DefendantTab.svelte";
+  import Dependant from "../components/DependantTab.svelte";
 
   let agents = {
     names: [
@@ -92,21 +95,26 @@
     margin-top: 2vh;
   }
 
-  .DefendantFooter > button {
-    margin-left: 10px;
-  }
-
   .defendantHeader > .left > span {
-    padding: 7px;
-    font-size: 1em;
+    padding: 6px;
+    font-size: 0.9em;
   }
 </style>
 
 <svelte:head>
   <title>Defendant - {defendant.name}</title>
 </svelte:head>
-
 <div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Defendants</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {defendant.first} {defendant.middle} {defendant.last}
+      </li>
+    </ol>
+  </nav>
   <div class="defendantHeader" style="display:flex">
     <div class="left" style="flex:2">
       <h3>{defendant.first} {defendant.middle} {defendant.last}</h3>
@@ -148,7 +156,7 @@
           role="tab"
           aria-controls="pills-profile"
           aria-selected="false">
-          Dependant
+          Dependants
         </a>
       </li>
       <li class="nav-item" role="presentation">
@@ -197,40 +205,7 @@
         id="pills-home"
         role="tabpanel"
         aria-labelledby="pills-home-tab">
-        <div class="table table-responsive">
-          <table class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Middle</th>
-                <th scope="col">DOB</th>
-                <th scope="col">SSN</th>
-                <th scope="col">Phone</th>
-                <th scope="col">State</th>
-                <th scope="col">City</th>
-                <th scope="col">Address</th>
-                <th scope="col">Postal Code</th>
-                <th scope="col">Apt #</th>
-              </tr>
-            </thead>
-            <tbody id="myTable">
-              <tr>
-                <td>{defendant.first}</td>
-                <td>{defendant.last}</td>
-                <td>{defendant.middle}</td>
-                <td>{defendant.dob}</td>
-                <td>{defendant.ssn}</td>
-                <td>{defendant.phone}</td>
-                <td>{defendant.state}</td>
-                <td>{defendant.city}</td>
-                <td>{defendant.address}</td>
-                <td>{defendant.postalCode}</td>
-                <td>{defendant.aptNum}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Defendant {defendant} />
       </div>
       <!--  -->
       <!--  -->
@@ -240,40 +215,7 @@
         id="pills-profile"
         role="tabpanel"
         aria-labelledby="pills-profile-tab">
-        <div class="table table-responsive">
-          <table class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Middle</th>
-                <th scope="col">DOB</th>
-                <th scope="col">SSN</th>
-                <th scope="col">Phone</th>
-                <th scope="col">State</th>
-                <th scope="col">City</th>
-                <th scope="col">Postal Code</th>
-                <th scope="col">Address</th>
-                <th scope="col">Apt #</th>
-              </tr>
-            </thead>
-            <tbody id="myTable">
-              <tr>
-                <td>{defendant.dependant_First}</td>
-                <td>{defendant.dependant_Last}</td>
-                <td>{defendant.dependant_Middle}</td>
-                <td>{defendant.dependant_Dob}</td>
-                <td>{defendant.dependant_Ssn}</td>
-                <td>{defendant.dependant_Phone}</td>
-                <td>{defendant.dependant_State}</td>
-                <td>{defendant.dependant_City}</td>
-                <td>{defendant.dependant_Address}</td>
-                <td>{defendant.dependant_PostalCode}</td>
-                <td>{defendant.dependant_AptNum}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Dependant {defendant} name={defendant.first + ' ' + defendant.last} />
       </div>
       <!--  -->
       <!--  -->
@@ -283,42 +225,10 @@
         id="pills-contact"
         role="tabpanel"
         aria-labelledby="pills-contact-tab">
-        <button
-          type="button"
-          class="btn btn-primary d-flex justify-content-center
-          align-content-between"
-          style="float: right; margin-bottom: 2vh">
-          Add Bond
-          <span class="material-icons">add</span>
-        </button>
-        <div class="table table-responsive">
-          <table class="table table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">Power #</th>
-                <th scope="col">Status</th>
-                <th scope="col">Agency</th>
-                <th scope="col">Agent</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Posted Date</th>
-                <th scope="col">Forfiture By</th>
-              </tr>
-            </thead>
-            <tbody id="myTable">
-              {#each defendant.bonds as bonds}
-                <tr>
-                  <td>{bonds.power_Number}</td>
-                  <td>{bonds.status}</td>
-                  <td>{bonds.agency}</td>
-                  <td>{bonds.agent}</td>
-                  <td>${bonds.amount}</td>
-                  <td>{bonds.posted_Date}</td>
-                  <td>{bonds.forfiture_By}</td>
-                </tr>
-              {/each}
-            </tbody>
-          </table>
-        </div>
+        <Bond
+          name={defendant.first + ' ' + defendant.last}
+          {defendant}
+          {agents} />
       </div>
       <div
         class="tab-pane fade"
@@ -337,16 +247,6 @@
         role="tabpanel"
         aria-labelledby="pills-contact-tab3">
         <div class="defendantFileUpload">
-          <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-primary d-flex justify-content-center"
-            data-toggle="modal"
-            data-target="#exampleModal"
-            style="float: right; margin-bottom: 2vh">
-            Add Payment
-            <span class="material-icons">add</span>
-          </button>
           <div class="payments">
             <Payments
               name={defendant.first + ' ' + defendant.last}
@@ -356,9 +256,5 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="DefendantFooter" style="display:flex; justify-content:flex-end;">
-    <button type="button" class="btn btn-primary">Edit</button>
-    <button type="button" class="btn btn-danger">Delete</button>
   </div>
 </div>
