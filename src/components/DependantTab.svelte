@@ -17,6 +17,9 @@
     -webkit-text-security: disc; /* Default */
     cursor: pointer;
   }
+  .modal-content {
+    color: #333;
+  }
 </style>
 
 <button

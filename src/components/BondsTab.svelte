@@ -5,7 +5,9 @@
 </script>
 
 <style>
-
+  .modal-content {
+    color: #333;
+  }
 </style>
 
 <!-- Button trigger modal -->

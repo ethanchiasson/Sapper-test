@@ -8,10 +8,10 @@
   main {
     position: relative;
     /* max-width: 56em; */
-    background-color: white;
+    color: white;
+    background-color: #1a202c;
     padding: 2em;
     box-sizing: border-box;
-    background-color: white;
     min-height: calc(100vh - 4em - 1px);
   }
 </style>

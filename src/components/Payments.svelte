@@ -4,6 +4,12 @@
   export let agents;
 </script>
 
+<style>
+  .modal-content {
+    color: #333;
+  }
+</style>
+
 <!-- Button trigger modal -->
 <button
   type="button"
@@ -25,15 +31,12 @@
       </tr>
     </thead>
     <tbody id="myTable">
-      {#each defendant.bonds as bonds}
+      {#each defendant.payments as payment}
         <tr>
-          <td>{bonds.power_Number}</td>
-          <td>{bonds.status}</td>
-          <td>{bonds.agency}</td>
-          <td>{bonds.agent}</td>
-          <td>${bonds.amount}</td>
-          <td>{bonds.posted_Date}</td>
-          <td>{bonds.forfiture_By}</td>
+          <td>${payment.amount}</td>
+          <td>{payment.payment_type}</td>
+          <td>{payment.cashier}</td>
+          <td>{payment.date}</td>
         </tr>
       {/each}
     </tbody>

@@ -1,7 +1,7 @@
 <script>
   import FileUpload from "../components/FileUpload.svelte";
   import Payments from "../components/Payments.svelte";
-  import Bond from "../components/Bonds.svelte";
+  import Bond from "../components/BondsTab.svelte";
   import Defendant from "../components/DefendantTab.svelte";
   import Dependant from "../components/DependantTab.svelte";
 
@@ -66,13 +66,13 @@
     payments: [
       {
         amount: "1560.89",
-        agent: "George Washington",
+        cashier: "John Smith",
         date: new Date(),
         payment_type: "PayPal"
       },
       {
         amount: "50475.5",
-        agent: "George Washington",
+        cashier: "Jane Jones",
         date: new Date(),
         payment_type: "Cash"
       }
@@ -99,6 +99,10 @@
     padding: 6px;
     font-size: 0.9em;
   }
+
+  .breadcrumb {
+    background-color: #212b38;
+  }
 </style>
 
 <svelte:head>
@@ -119,15 +123,11 @@
     <div class="left" style="flex:2">
       <h3>{defendant.first} {defendant.middle} {defendant.last}</h3>
       <span class="badge badge-pill badge-danger">{defendant.status}</span>
-      <span class="badge badge-pill badge-secondary">{defendant.agency}</span>
     </div>
     <div class="right" style="flex:1">
-      <button type="button" class="btn btn-success" style="float:right">
-        <h4>
-          Balance
-          <span class="badge badge-light">${defendant.balance}</span>
-        </h4>
-      </button>
+      <h3 style="float: right;">
+        <span class="badge badge-dark">${defendant.balance}</span>
+      </h3>
     </div>
   </div>
   <!--  -->

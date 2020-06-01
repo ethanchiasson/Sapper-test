@@ -4,10 +4,11 @@
 
 <style>
   nav {
-    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+    border-bottom: 1px solid #333;
     font-weight: 300;
     padding: 0 1em;
     height: 4em;
+    background-color: #1a202c;
   }
 
   ul {
@@ -30,6 +31,7 @@
   [aria-current] {
     position: relative;
     display: inline-block;
+    font-weight: bold;
   }
 
   [aria-current]::after {
@@ -37,7 +39,7 @@
     content: "";
     width: calc(100% - 1em);
     height: 2px;
-    background-color: rgb(255, 62, 0);
+    background-color: #007bff;
     display: block;
     bottom: -1px;
   }
@@ -46,6 +48,7 @@
     text-decoration: none;
     padding: 1em 0.5em;
     display: block;
+    color: white;
   }
 </style>
 
@@ -57,8 +60,15 @@
       </a>
     </li>
     <li>
-      <a aria-current={segment === 'about' ? 'page' : undefined} href="about">
+      <a
+        aria-current={segment === 'agencies' ? 'page' : undefined}
+        href="agencies">
         Agencies
+      </a>
+    </li>
+    <li>
+      <a aria-current={segment === 'agents' ? 'page' : undefined} href="agents">
+        Agents
       </a>
     </li>
 
