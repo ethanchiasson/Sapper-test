@@ -8,10 +8,10 @@
   let agents = {
     names: [
       {
-        agent_name: "Ethan"
+        agent_name: "Jon"
       },
       {
-        agent_name: "Emily"
+        agent_name: "Mike"
       }
     ]
   };

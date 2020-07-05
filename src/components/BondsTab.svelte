@@ -57,6 +57,12 @@
               style="margin: 2px">
               Delete
             </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-primary"
+              style="margin: 2px">
+              View
+            </button>
           </td>
         </tr>
       {/each}
@@ -107,6 +113,12 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="agentSelect">Ageny</label>
+            <select class="form-control" id="agentSelect">
+              <option>US Bail</option>
+              <option>NYC Bail</option>
+              <option>San Fran Bail</option>
+            </select>
             <label for="agentSelect">Agent</label>
             <select class="form-control" id="agentSelect">
               {#each agents.names as agent}

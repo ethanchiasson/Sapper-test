@@ -99,7 +99,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          New Defendant for {name}
+          Add New Dependant for {name}
         </h5>
         <button
           type="button"
@@ -112,22 +112,66 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Amount</label>
+            <label for="exampleFormControlInput1">First Name</label>
             <input
-              type="number"
-              min="1"
+              type="text"
               class="form-control"
               id="exampleFormControlInput1"
-              placeholder="Enter the Payment Amount as seen on Invoice" />
-          </div>
-          <div class="form-group">
-            <label for="paymentSelect">Payment Type</label>
-            <select class="form-control" id="paymentSelect">
-              <option>PayPal</option>
-              <option>Cash</option>
-              <option>Check</option>
-              <option>Credit Card</option>
-            </select>
+              placeholder="First Name" />
+            <label for="exampleFormControlInput1">Middle Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Middle Name" />
+            <label for="exampleFormControlInput1">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Last Name" />
+            <label for="exampleFormControlInput1">DOB</label>
+            <input
+              type="date"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Last Name" />
+            <label for="exampleFormControlInput1">SSN</label>
+            <input
+              type="number"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Social Security Number" />
+            <label for="exampleFormControlInput1">State</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="State" />
+            <label for="exampleFormControlInput1">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="City" />
+            <label for="exampleFormControlInput1">Zip Code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="ZIP" />
+            <label for="exampleFormControlInput1">Phone Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Phone Number" />
+            <label for="exampleFormControlInput1">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Phone Number" />
           </div>
         </form>
       </div>
